@@ -5,9 +5,10 @@ import apiClient from "../services/api-client";
 
 // determinar el interface de game
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 // determinar el interface del array de objetos que fetcheamos
