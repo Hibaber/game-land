@@ -11,12 +11,13 @@ import { MdPhoneIphone } from "react-icons/md";
 import { Platform } from "../hooks/useGames";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
+import { IconType } from "react-icons";
 
 interface Props {
   platforms: Platform[];
 }
 const PlatformIconsList = ({ platforms }: Props) => {
-  const iconMap: { [key: string] } = {
+  const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,
     xbox: FaXbox,

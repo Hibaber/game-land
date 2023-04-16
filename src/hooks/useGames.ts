@@ -3,13 +3,13 @@ import { CanceledError } from "axios";
 import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 
-// determinar el interface de platform
+
 export interface Platform {
   id: number,
   name: string,
   slug: string
 }
-// determinar el interface de game
+
 export interface Game {
   id: number;
   name: string;
@@ -27,18 +27,23 @@ interface FetchingGamesResponse {
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setErrors] = useState(" ");
+  const[isLoading, setLoading]=useState(false);
 
   useEffect(() => {
-
-    // handle cancellation 
     const controller = new AbortController()
+
+    setLoading(true)
     apiClient
       .get<FetchingGamesResponse>("/games",{signal:controller.signal})
-      .then((res) => setGames(res.data.results))
+      .then((res) => {
+        setGames(res.data.results)
+        setLoading(false)
+      })
       .catch((err) => {
         // check if there is a cancel request
         if (err instanceof CanceledError) return;
         setErrors(err.message)
+        setLoading(false)
       });
     
     // call clean up function
@@ -46,7 +51,7 @@ const useGames = () => {
   }, []);
 
   return (
-    {games, error}
+    {games, error, isLoading}
   )
   
 }
