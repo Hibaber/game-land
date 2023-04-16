@@ -3,12 +3,18 @@ import { CanceledError } from "axios";
 import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 
+// determinar el interface de platform
+export interface Platform {
+  id: number,
+  name: string,
+  slug: string
+}
 // determinar el interface de game
-
 export interface Game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: {platform: Platform}[]
 }
 
 // determinar el interface del array de objetos que fetcheamos
