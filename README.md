@@ -1,6 +1,8 @@
 Game Land (still a work in progress...)
 
-It's an application built with React, Typescript and Ckakra UI. See demo here: https://game-lland-q2qb6ve38-hibaber.vercel.app/
+It's an application built with React, Typescript and Ckakra UI. 
+
+See demo here: https://game-lland-q2qb6ve38-hibaber.vercel.app/
 
 It feches video games from RAWG API. https://rawg.io/apidocs
 
